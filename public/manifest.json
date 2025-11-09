@@ -1,0 +1,6 @@
+{
+  "short_name": "Portfolio",
+  "name": "Architekt Portfolio Website",
+  "start_url": ".",
+  "display": "standalone"
+}
