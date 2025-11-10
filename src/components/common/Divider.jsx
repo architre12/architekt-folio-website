@@ -1,15 +1,15 @@
 import { Divider, Box } from '@mui/material';
 
-export default function ThickDivider() {
+export default function ThickDivider({ size }) {
   return (
-    <Box sx={{ my: 4 }}>
+    <Box sx={{ mb: size === 'sm' ? 6 : 2 }}>
       <Divider
         sx={{
-          width: '100px',         
-          height: '12px',           
+          width: size === 'sm' ? '65px' : '100px',         
+          height: size === 'sm' ? '6px' : '12px',           
           bgcolor: 'primary.main',
           borderRadius: 0,
-          mx: '5px',
+          mx: '5px'
         }}
       />
     </Box>
