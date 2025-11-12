@@ -8,8 +8,10 @@ import Contact from './Contact';
 const About = () => {
     return(
         <Layout 
-            backgroundColor={theme.palette.background.secondary} 
+            width='100%'
+			backgroundColor={theme.palette.background.secondary} 
             py={14}
+			px={12}
         >
             <Grid container spacing={4} sx={{ height: '100%' }}>
                 <Grid size={{ xs: 12, md: 6 }}>

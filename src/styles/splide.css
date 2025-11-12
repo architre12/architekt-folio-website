@@ -1,0 +1,41 @@
+/* Skills Carousel Custom Styles */
+.splide__track {
+  padding: 20px 0;
+}
+
+.splide__arrow {
+  background: rgba(254, 176, 41, 0.9) !important;
+  border: none !important;
+  border-radius: 50% !important;
+  width: 3rem !important;
+  height: 3rem !important;
+  transition: all 0.3s ease !important;
+}
+
+.splide__arrow svg {
+  fill: white !important;
+  width: 1.2rem !important;
+  height: 1.2rem !important;
+}
+
+.splide__arrow--prev {
+  left: -3rem !important;
+}
+
+.splide__arrow--next {
+  right: -3rem !important;
+}
+
+/* Hide arrows on mobile */
+@media (max-width: 768px) {
+  .splide__arrow {
+    display: none !important;
+  }
+}
+
+/* Ensure slides are centered */
+.splide__slide {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+}

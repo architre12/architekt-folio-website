@@ -39,7 +39,7 @@ const Layout = ({
       sx={{ 
         backgroundColor,
         py,
-        width: '100vw',
+		width: '100%',
         position: 'relative',
         left: '50%',
         right: '50%',
