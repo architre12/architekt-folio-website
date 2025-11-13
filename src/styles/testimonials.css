@@ -1,0 +1,94 @@
+/* Testimonials Carousel Custom Styles */
+
+/* Container styling */
+.splide--testimonials {
+  padding: 20px 0;
+}
+
+/* Arrow customization */
+.splide--testimonials .splide__arrow {
+  background: rgba(254, 176, 41, 0.9) !important;
+  border: none !important;
+  border-radius: 50% !important;
+  width: 3.5rem !important;
+  height: 3.5rem !important;
+  transition: all 0.3s ease !important;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+}
+
+.splide--testimonials .splide__arrow:hover {
+  background: rgba(254, 176, 41, 1) !important;
+  transform: translateY(-50%) scale(1.1) !important;
+}
+
+.splide--testimonials .splide__arrow svg {
+  fill: white !important;
+  width: 1.4rem !important;
+  height: 1.4rem !important;
+}
+
+.splide--testimonials .splide__arrow--prev {
+  left: -4rem !important;
+}
+
+.splide--testimonials .splide__arrow--next {
+  right: -4rem !important;
+}
+
+/* Pagination dots */
+.splide--testimonials .splide__pagination {
+  bottom: -3rem !important;
+}
+
+.splide--testimonials .splide__pagination__page {
+  background: rgba(156, 160, 175, 0.5) !important;
+  border: none !important;
+  width: 12px !important;
+  height: 12px !important;
+  margin: 0 8px !important;
+  transition: all 0.3s ease !important;
+}
+
+.splide--testimonials .splide__pagination__page.is-active {
+  background: #feb029 !important;
+  transform: scale(1.3) !important;
+}
+
+.splide--testimonials .splide__pagination__page:hover {
+  background: rgba(254, 176, 41, 0.7) !important;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .splide--testimonials .splide__arrow {
+    display: none !important;
+  }
+  
+  .splide--testimonials .splide__pagination {
+    bottom: -2rem !important;
+  }
+}
+
+/* Slide transition effects */
+.splide--testimonials .splide__slide {
+  opacity: 0.7 !important;
+  transform: scale(0.95) !important;
+  transition: all 0.5s ease !important;
+}
+
+.splide--testimonials .splide__slide.is-active {
+  opacity: 1 !important;
+  transform: scale(1) !important;
+}
+
+/* Focus styling for accessibility */
+.splide--testimonials .splide__arrow:focus {
+  outline: 2px solid #feb029 !important;
+  outline-offset: 4px !important;
+}
+
+.splide--testimonials .splide__pagination__page:focus {
+  outline: 2px solid #feb029 !important;
+  outline-offset: 2px !important;
+}
