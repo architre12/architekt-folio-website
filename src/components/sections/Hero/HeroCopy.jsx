@@ -8,10 +8,11 @@ const HeroCopy = () => {
 			variant="h1"
 			gutterBottom
 			sx={{
-			'& span': {
-				color: theme => theme.palette.primary.main,
-			},
-			lineHeight: 0.95,
+				fontSize: { xs: '12rem', lg: '5.5rem' },
+				'& span': {
+					color: theme => theme.palette.primary.main,
+				},
+				lineHeight: 0.95,
 			}}
 		>
 			I'm <span>Archit</span> <br /> Chitre.

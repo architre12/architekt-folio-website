@@ -2,6 +2,7 @@ import { Box, Grid, Typography } from '@mui/material';
 import { Splide, SplideSlide } from '@splidejs/react-splide';
 import theme from '../../../theme/theme';
 import Layout from '../../layout/Layout';
+import Icon from '../../common/Icon';
 import { skills } from '../../../data/skills';
 
 import '@splidejs/react-splide/css';
@@ -11,8 +12,8 @@ const SkillCard = ({ skill }) => {
 	return (
 		<Box 
 			sx={{ 
-				width: '15rem', 
-				height: '15rem', 
+				width: { xs: '20rem', lg: '12rem' }, 
+				height: { xs: '20rem', lg: '12rem' }, 
 				backgroundColor: 'background.card',
 				padding: 3,
 				display: 'flex',
@@ -29,11 +30,22 @@ const SkillCard = ({ skill }) => {
 			}}
 		>
 			<Grid container spacing={1}>
-				<Grid size={4}>Icon</Grid>
+				<Grid size={4}>
+					<Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+						<Icon 
+							name={skill.icon} 
+							size={{ xs: 48, lg: 36 }}
+						/>
+					</Box>
+				</Grid>
 				<Grid size={8}>
 					<Box xs={{ textAlign: 'left' }}>
-						<Typography variant="h5" sx={{ fontSize: '1.2rem' }}>Amazon Web Services</Typography>
-						<Typography variant="body">Intermediate</Typography>
+						<Typography variant="h5" sx={{ fontSize: { xs: '2rem', lg: '1.2rem'}, letterSpacing: '0.05em' }} gutterBottom>
+							{skill.name}
+						</Typography>
+						<Typography variant="small">
+							{skill.level}
+						</Typography>
 					</Box>
 				</Grid>
 			</Grid>
@@ -44,33 +56,34 @@ const SkillCard = ({ skill }) => {
 const Skills = () => {
 	const splideOptions = {
 		type: 'loop',
-		perPage: 4,
+		perPage: 6,
 		perMove: 1,
-		gap: '1.2rem',
+		gap: '1rem',
 		autoplay: true,
-		interval: 4000,
+		interval: 2500,
 		pauseOnHover: true,
 		arrows: false,
 		pagination: false,
 		breakpoints: {
 			1200: {
-				perPage: 4,
+				perPage: 2,
+				gap: '0.5rem',
 			},
 			900: {
 				perPage: 3,
 			},
 			600: {
-				perPage: 2,
+				perPage: 3,
 			},
 			400: {
-				perPage: 1,
+				perPage: 3,
 			},
 		},
 	};
 
 	return (
-		<Layout py={14}>
-			<Box sx={{ px: 10, position: 'relative', top: '-15rem' }}>
+		<Layout>
+			<Box sx={{ px: 10, position: 'relative', top: '-6rem' }}>
 				<Splide options={splideOptions}>
 					{skills.map((skill) => (
 						<SplideSlide key={skill.id}>

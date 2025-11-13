@@ -10,18 +10,18 @@ import socialLinks from '../../../data/socialLinks';
 const SocialLinks = () => {
 
 	return(
-		<Stack direction="row" spacing={0.5}>
+		<Stack direction="row" spacing={1}>
 			<IconButton size="large" aria-label="linkedin" href={socialLinks.linkedin} target="_blank" rel="noopener noreferrer">
-				<LinkedInIcon sx={{ fontSize: '1.8rem' }} />
+				<LinkedInIcon sx={{ fontSize: {xs: '4rem', lg: '2.2rem'} }} />
 			</IconButton>
 			<IconButton size="large" aria-label="github" href={socialLinks.github} target="_blank" rel="noopener noreferrer">
-				<GitHubIcon sx={{ fontSize: '1.8rem' }} />
+				<GitHubIcon sx={{ fontSize: {xs: '4rem', lg: '2.2rem'} }} />
 			</IconButton>
 			<IconButton size="large" aria-label="facebook" href={socialLinks.facebook} target="_blank" rel="noopener noreferrer">
-				<FacebookIcon sx={{ fontSize: '1.8rem' }} />
+				<FacebookIcon sx={{ fontSize: {xs: '4rem', lg: '2.2rem'} }} />
 			</IconButton>
 			<IconButton size="large" aria-label="instagram" href={socialLinks.instagram} target="_blank" rel="noopener noreferrer">
-				<InstagramIcon sx={{ fontSize: '1.8rem' }} />
+				<InstagramIcon sx={{ fontSize: {xs: '4rem', lg: '2.2rem'} }} />
 			</IconButton>
 		</Stack>
 	)

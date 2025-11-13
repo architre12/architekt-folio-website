@@ -40,6 +40,7 @@ const Layout = ({
         backgroundColor,
         py,
 		width: '100%',
+		minWidth: '99.5vw',
         position: 'relative',
         left: '50%',
         right: '50%',

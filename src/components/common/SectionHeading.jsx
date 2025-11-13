@@ -8,19 +8,21 @@ const SectionHeading = ({ title, subtitle, shadowText, centered = false }) => {
 		}}>
 			{shadowText && (
 				<Box sx={{ mt: -16, position: 'static'}}>
-					<span
-						style={{
+					<Typography
+						component='span'
+						sx={{
+							display: 'inline',
 							position: 'relative',
-							bottom: '-75px',
-							fontSize: '6.5rem',
+							bottom: {xs: '-115px', lg: '-75px'},
+							fontSize: { xs: '10rem', lg: '6.5rem'},
 							lineHeight: 1,
 							opacity: '0.05',
 							fontWeight: 900,
 						}}
 					>
 						{shadowText}
-					</span>
-					<Typography sx={{ position: 'relative' }} variant="h2" gutterBottom>
+					</Typography>
+					<Typography sx={{ position: 'relative', fontSize: { xs: '6rem', lg: '4rem'} }} variant="h2" gutterBottom>
 						{title}
 					</Typography>
 				</Box>
