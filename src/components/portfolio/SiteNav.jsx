@@ -11,6 +11,7 @@ const navItems = [
 
 export default function SiteNav() {
   const [isOpen, setIsOpen] = useState(false);
+  const [activeHref, setActiveHref] = useState('#about');
   const shouldReduceMotion = useReducedMotion();
 
   useEffect(() => {
@@ -19,6 +20,25 @@ export default function SiteNav() {
     };
     window.addEventListener('keydown', onKeyDown);
     return () => window.removeEventListener('keydown', onKeyDown);
+  }, []);
+
+  useEffect(() => {
+    const sectionElements = navItems
+      .map((item) => ({ ...item, element: document.querySelector(item.href) }))
+      .filter((item) => item.element);
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visibleSection = entries
+          .filter((entry) => entry.isIntersecting)
+          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+        if (visibleSection) setActiveHref(`#${visibleSection.target.id}`);
+      },
+      { rootMargin: '-18% 0px -65% 0px', threshold: [0, 0.2, 0.5] },
+    );
+
+    sectionElements.forEach(({ element }) => observer.observe(element));
+    return () => observer.disconnect();
   }, []);
 
   const closeMenu = () => setIsOpen(false);
@@ -31,7 +51,9 @@ export default function SiteNav() {
       </a>
 
       <nav className="desktop-nav" aria-label="Primary navigation">
-        {navItems.map((item) => <a href={item.href} key={item.href}>{item.label}</a>)}
+        {navItems.map((item) => (
+          <a className={activeHref === item.href ? 'is-active' : ''} href={item.href} key={item.href} aria-current={activeHref === item.href ? 'location' : undefined}>{item.label}</a>
+        ))}
       </nav>
 
       <a className="header-cta" href="mailto:architchitre@gmail.com">Let&apos;s talk <span aria-hidden="true">↗</span></a>
@@ -63,6 +85,7 @@ export default function SiteNav() {
                   href={item.href}
                   key={item.href}
                   onClick={closeMenu}
+                  aria-current={activeHref === item.href ? 'location' : undefined}
                   initial={shouldReduceMotion ? false : { opacity: 0, y: 18 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: 12 }}

@@ -1,9 +1,13 @@
 import { useRef } from 'react';
 import { motion, useReducedMotion, useScroll, useTransform } from 'framer-motion';
+import LinkedInIcon from '@mui/icons-material/LinkedIn';
+import GitHubIcon from '@mui/icons-material/GitHub';
+import InstagramIcon from '@mui/icons-material/Instagram';
 import './App.css';
 
 import heroImage from './assets/images/hero-image.png';
 import orbit from './assets/icons/orbit.svg';
+import sectionFlourish from './assets/icons/section-flourish.svg';
 import arrowUpRight from './assets/icons/arrow-up-right.svg';
 import { skills } from './data/skills';
 import { testimonials } from './data/testimonials';
@@ -12,7 +16,6 @@ import useSmoothScroll from './hooks/useSmoothScroll';
 import Reveal from './components/motion/Reveal';
 import MaskedHeading from './components/motion/MaskedHeading';
 import ButtonLink from './components/portfolio/ButtonLink';
-import ProjectCard from './components/portfolio/ProjectCard';
 import SectionHeading from './components/portfolio/SectionHeading';
 import SiteNav from './components/portfolio/SiteNav';
 
@@ -33,6 +36,20 @@ const metrics = [
   ['50', '+', 'Production-grade', 'projects delivered'],
   ['∞', '', 'Curiosity for the', 'next hard problem'],
 ];
+
+const socialProfiles = [
+  { label: 'LinkedIn', href: socialLinks.linkedin, Icon: LinkedInIcon },
+  { label: 'GitHub', href: socialLinks.github, Icon: GitHubIcon },
+  { label: 'Instagram', href: socialLinks.instagram, Icon: InstagramIcon },
+];
+
+function SocialIconLink({ label, href, Icon, className = '' }) {
+  return (
+    <a className={`social-icon-link ${className}`.trim()} href={href} target="_blank" rel="noreferrer" aria-label={`${label} (opens in a new tab)`}>
+      <Icon fontSize="inherit" aria-hidden="true" />
+    </a>
+  );
+}
 
 function App() {
   const heroRef = useRef(null);
@@ -66,6 +83,7 @@ function App() {
               transition={{ duration: 90, ease: 'linear', repeat: Infinity }}
             />
           </motion.div>
+          <img className="hero-left-art" src={sectionFlourish} alt="" aria-hidden="true" />
 
           <div className="hero-copy">
             <motion.p
@@ -76,7 +94,7 @@ function App() {
             >
               Independent engineer <span>·</span> Mumbai, India
             </motion.p>
-            <MaskedHeading as="h1" className="hero-title" lines={['SOFTWARE', 'ENGINEER']} delay={0.12} />
+            <MaskedHeading as="h1" className="hero-title" lines={['ARCHIT', 'CHITRE']} delay={0.12} />
             <motion.div
               className="hero-footnote"
               initial={shouldReduceMotion ? false : { opacity: 0, y: 18 }}
@@ -84,10 +102,15 @@ function App() {
               transition={{ duration: 0.75, delay: 0.65, ease: [0.22, 1, 0.36, 1] }}
             >
               <p>Building calm, capable digital products<br />for people who expect more.</p>
-              <a className="round-link" href="#about" aria-label="Explore my work">
-                <span>SCROLL<br />TO EXPLORE</span><i aria-hidden="true">↓</i>
-              </a>
             </motion.div>
+          </div>
+
+          <div className="hero-actions" aria-label="Contact Archit">
+            <p>Let&apos;s connect</p>
+            <div className="hero-socials">
+              {socialProfiles.map((profile) => <SocialIconLink {...profile} key={profile.label} />)}
+            </div>
+            <a className="hero-email-cta" href="mailto:architchitre@gmail.com">Start a conversation <span aria-hidden="true">↗</span></a>
           </div>
 
           <motion.div className="portrait-wrap" style={{ y: portraitY }}>
@@ -107,6 +130,7 @@ function App() {
 
           <p className="hero-side-label">FULL-STACK DEVELOPMENT <span>／</span> PRODUCT THINKING</p>
           <div className="hero-index" aria-hidden="true"><span>01</span><i /></div>
+          <a className="read-more" href="#about"><span>Read more</span><i aria-hidden="true">⌄</i></a>
         </section>
 
         <section className="intro section-shell cinematic-section" id="about" aria-labelledby="about-title">
@@ -179,37 +203,24 @@ function App() {
           <Reveal className="experience-copy" direction="left">
             <p>I care about the underlying systems as much as the surface-level polish: both have to work beautifully.</p>
           </Reveal>
-          <div className="experience-list">
+          <div className="experience-timeline" aria-label="Career timeline">
             {experience.map((item, index) => (
-              <Reveal as="article" className="experience-item" delay={index * 0.08} key={item.company}>
-                <time>{item.period}</time><h3>{item.company}</h3><p>{item.role}</p><span>{item.detail}</span><img src={arrowUpRight} alt="" />
+              <Reveal as="article" className={`timeline-entry timeline-entry--${index % 2 === 0 ? 'left' : 'right'}`} delay={index * 0.1} direction={index % 2 === 0 ? 'right' : 'left'} key={item.company}>
+                <div className="timeline-card">
+                  <div className="timeline-card-top"><time>{item.period}</time><span>0{index + 1}</span></div>
+                  <h3>{item.company}</h3>
+                  <p>{item.role}</p>
+                  <div className="timeline-card-bottom"><span>{item.detail}</span><img src={arrowUpRight} alt="" /></div>
+                </div>
+                <span className="timeline-node" aria-hidden="true"><i /></span>
               </Reveal>
             ))}
           </div>
         </section>
 
-        <section className="archive section-shell cinematic-section" aria-labelledby="archive-title">
-          <Reveal><div className="section-label"><span>05</span> Project archive</div></Reveal>
-          <div className="archive-layout">
-            <Reveal className="archive-intro">
-              <p className="eyebrow">Selected work</p>
-              <MaskedHeading id="archive-title" lines={['The story is', 'still unfolding.']} />
-              <p>Detailed case studies are being prepared. In the meantime, I&apos;m happy to share relevant work and the thinking behind it in conversation.</p>
-            </Reveal>
-            <Reveal direction="left" delay={0.12}>
-              <ProjectCard
-                eyebrow="Archive entry 01"
-                title="Case studies"
-                description="A considered look at the systems, decisions, and outcomes behind selected product work."
-                status="In progress"
-              />
-            </Reveal>
-          </div>
-        </section>
-
         <section className="quote-section cinematic-section" aria-labelledby="words-title">
           <div className="quote-grid section-shell">
-            <Reveal><div className="section-label"><span>06</span> In their words</div></Reveal>
+            <Reveal><div className="section-label"><span>05</span> In their words</div></Reveal>
             <div className="quote-stack">
               <h2 className="sr-only" id="words-title">Testimonials</h2>
               {testimonials.map((testimonial, index) => (
@@ -234,9 +245,7 @@ function App() {
           <div className="footer-bottom section-shell">
             <p>© {new Date().getFullYear()} Archit Chitre</p>
             <div className="social-links">
-              <a href={socialLinks.linkedin} target="_blank" rel="noreferrer">LinkedIn</a>
-              <a href={socialLinks.github} target="_blank" rel="noreferrer">GitHub</a>
-              <a href={socialLinks.instagram} target="_blank" rel="noreferrer">Instagram</a>
+              {socialProfiles.map((profile) => <SocialIconLink {...profile} key={profile.label} />)}
             </div>
             <a className="back-top" href="#top">Back to top ↑</a>
           </div>
