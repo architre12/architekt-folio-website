@@ -39,7 +39,6 @@ function App() {
   const shouldReduceMotion = useReducedMotion();
   const { scrollY, scrollYProgress } = useScroll();
   const portraitY = useTransform(scrollY, [0, 900], [0, shouldReduceMotion ? 0 : 72]);
-  const portraitOpacity = useTransform(scrollY, [0, 760], [1, 0.38]);
   const orbitY = useTransform(scrollY, [0, 900], [0, shouldReduceMotion ? 0 : -34]);
 
   useSmoothScroll();
@@ -67,8 +66,6 @@ function App() {
               transition={{ duration: 90, ease: 'linear', repeat: Infinity }}
             />
           </motion.div>
-          <div className="hero-rail hero-rail-left" aria-hidden="true"><span>FRAME 01</span><i /></div>
-          <div className="hero-rail hero-rail-right" aria-hidden="true"><i /><span>ARCHIT CHITRE</span></div>
 
           <div className="hero-copy">
             <motion.p
@@ -79,7 +76,7 @@ function App() {
             >
               Independent engineer <span>·</span> Mumbai, India
             </motion.p>
-            <MaskedHeading as="h1" className="hero-title" lines={['SOFTWARE', 'ENGINEER']} delay={0.12} eager />
+            <MaskedHeading as="h1" className="hero-title" lines={['SOFTWARE', 'ENGINEER']} delay={0.12} />
             <motion.div
               className="hero-footnote"
               initial={shouldReduceMotion ? false : { opacity: 0, y: 18 }}
@@ -93,7 +90,7 @@ function App() {
             </motion.div>
           </div>
 
-          <motion.div className="portrait-wrap" style={{ y: portraitY, opacity: portraitOpacity }}>
+          <motion.div className="portrait-wrap" style={{ y: portraitY }}>
             <div className="portrait-halo" aria-hidden="true" />
             <div className="portrait-frame portrait-frame-one" aria-hidden="true" />
             <div className="portrait-frame portrait-frame-two" aria-hidden="true" />

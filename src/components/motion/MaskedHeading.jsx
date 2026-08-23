@@ -1,6 +1,6 @@
 import { motion, useReducedMotion } from 'framer-motion';
 
-export default function MaskedHeading({ lines, className = '', as = 'h2', delay = 0, eager = false, id }) {
+export default function MaskedHeading({ lines, className = '', as = 'h2', delay = 0, id }) {
   const shouldReduceMotion = useReducedMotion();
   const MotionHeading = motion[as];
 
@@ -10,9 +10,7 @@ export default function MaskedHeading({ lines, className = '', as = 'h2', delay 
         <span className="heading-line" key={`${line}-${index}`}>
           <motion.span
             initial={shouldReduceMotion ? false : { y: '112%' }}
-            animate={eager && !shouldReduceMotion ? { y: 0 } : undefined}
-            whileInView={!eager && !shouldReduceMotion ? { y: 0 } : undefined}
-            viewport={!eager ? { once: true, amount: 0.4 } : undefined}
+            animate={!shouldReduceMotion ? { y: 0 } : undefined}
             transition={{ duration: 0.9, delay: delay + index * 0.1, ease: [0.22, 1, 0.36, 1] }}
             aria-hidden="true"
           >

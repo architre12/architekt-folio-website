@@ -14,7 +14,6 @@ export default function Reveal({
   delay = 0,
   direction = 'up',
   as = 'div',
-  amount = 0.22,
 }) {
   const shouldReduceMotion = useReducedMotion();
   const offset = offsets[direction] || offsets.up;
@@ -24,8 +23,7 @@ export default function Reveal({
     <MotionComponent
       className={className}
       initial={shouldReduceMotion ? false : { opacity: 0, ...offset }}
-      whileInView={shouldReduceMotion ? undefined : { opacity: 1, x: 0, y: 0, scale: 1 }}
-      viewport={{ once: true, amount }}
+      animate={shouldReduceMotion ? undefined : { opacity: 1, x: 0, y: 0, scale: 1 }}
       transition={{ duration: 0.82, delay, ease: [0.22, 1, 0.36, 1] }}
     >
       {children}
