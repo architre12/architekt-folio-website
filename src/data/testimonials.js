@@ -11,6 +11,6 @@ export const testimonials = [
     name: "Ankit Jaiswal",
     position: "Founder & CEO",
     company: "Qwings",
-    content: "The technical expertise and problem-solving skills Archit demonstrated were outstanding. He took our vision and turned it into a robust, scalable application that has transformed our business operations. Highly recommended!",
+    content: "The technical expertise and problem-solving skills Archit demonstrated were outstanding. He took our vision and turned it into a production-ready application. Highly recommended!",
   }
 ];

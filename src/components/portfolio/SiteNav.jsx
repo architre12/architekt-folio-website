@@ -6,6 +6,7 @@ import { navigationItems } from '../../data/portfolio';
 export default function SiteNav() {
   const [isOpen, setIsOpen] = useState(false);
   const [activeHref, setActiveHref] = useState('#about');
+  const [isScrolled, setIsScrolled] = useState(false);
   const shouldReduceMotion = useReducedMotion();
 
   useEffect(() => {
@@ -14,6 +15,14 @@ export default function SiteNav() {
     };
     window.addEventListener('keydown', onKeyDown);
     return () => window.removeEventListener('keydown', onKeyDown);
+  }, []);
+
+  useEffect(() => {
+    const updateHeaderState = () => setIsScrolled(window.scrollY > 24);
+
+    updateHeaderState();
+    window.addEventListener('scroll', updateHeaderState, { passive: true });
+    return () => window.removeEventListener('scroll', updateHeaderState);
   }, []);
 
   useEffect(() => {
@@ -38,7 +47,7 @@ export default function SiteNav() {
   const closeMenu = () => setIsOpen(false);
 
   return (
-    <header className="site-header">
+    <header className={`site-header${isScrolled ? ' is-scrolled' : ''}`}>
       <a className="wordmark" href="#top" aria-label="Archit Chitre, back to top">
         <img src={monogram} alt="" />
       </a>

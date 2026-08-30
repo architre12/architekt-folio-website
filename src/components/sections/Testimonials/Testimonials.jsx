@@ -4,13 +4,12 @@ import Reveal from '../../motion/Reveal';
 
 export default function Testimonials() {
   return (
-    <section className="quote-section cinematic-section" aria-labelledby="words-title">
+    <section className="quote-section cinematic-section" id="testimonials" aria-labelledby="words-title">
       <div className="quote-grid section-shell">
-        <Reveal>
-          <div className="section-label"><span>{testimonialContent.section.index}</span>{testimonialContent.section.label}</div>
+        <Reveal className="testimonial-heading">
+          <h2 id="words-title">{testimonialContent.title} <span>{testimonialContent.accentTitle}</span></h2>
         </Reveal>
         <div className="quote-stack">
-          <h2 className="sr-only" id="words-title">{testimonialContent.heading}</h2>
           {testimonials.map((testimonial, index) => (
             <Reveal as="figure" className={`testimonial testimonial-${index + 1}`} delay={index * 0.12} key={testimonial.id}>
               <span className="quote-mark" aria-hidden="true">“</span>

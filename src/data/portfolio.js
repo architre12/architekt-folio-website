@@ -1,11 +1,14 @@
 export const siteContact = {
   email: 'architchitre@gmail.com',
+  phone: '+91 75069 60902',
+  phoneHref: 'tel:+917506960902',
 };
 
 export const navigationItems = [
   { label: 'About', href: '#about' },
-  { label: 'Focus', href: '#focus' },
+  { label: 'Skills', href: '#skills' },
   { label: 'Career', href: '#experience' },
+  { label: 'Testimonials', href: '#testimonials' },
   { label: 'Contact', href: '#contact' },
 ];
 
@@ -25,15 +28,19 @@ export const aboutContent = {
   section: { index: '01', label: 'About' },
   eyebrow: 'A few words',
   titleLines: ['Code with', 'conviction.'],
-  lead: "I'm a software engineer with a knack for turning ambitious ideas into focused, reliable experiences.",
-  body: 'I bridge backend logic and user experience with a practical, product-minded approach. Currently at Morningstar, I help build financial software that makes complex information feel more accessible.',
-  actionLabel: 'More about me',
+  lead: "I build digital products focusing on user experience and scalability.",
+  body: [
+	"From static web pages to deploying containerized microservices and building event-driven architectures, I've come a long way. These days I spend time with my dear friends Claude and ChatGPT.",
+	"When I'm not in front of my laptop, I'm either camped up in a cute cafe in Bandra, or halfway across the world because I like collecting stamps on my passport."
+  ]
 };
 
+export const experienceStartYear = 2021;
+
 export const metrics = [
-  { value: '3', suffix: '+', lines: ['Years shaping', 'digital products'] },
+  { value: String(new Date().getFullYear() - experienceStartYear), suffix: '+', lines: ['Years shaping', 'digital products'] },
   { value: '50', suffix: '+', lines: ['Production-grade', 'projects delivered'] },
-  { value: '∞', suffix: '', lines: ['Curiosity for the', 'next hard problem'] },
+  { value: '∞', suffix: '', lines: ['Curiosity for the', 'next problem'] },
 ];
 
 export const focusContent = {
@@ -71,22 +78,20 @@ export const experienceContent = {
   headingId: 'experience-title',
   eyebrow: 'The journey so far',
   titleLines: ['Work with', 'real impact.'],
-  description: 'I care about the underlying systems as much as the surface-level polish: both have to work beautifully.',
 };
 
 export const experience = [
-  { period: 'DEC 2024 — NOW', company: 'Morningstar', role: 'Software Engineer', detail: 'Full-time · Hybrid' },
-  { period: 'MAY 2023 — NOV 2024', company: 'Sciative Solutions', role: 'Jr. Software Developer', detail: 'Full-time · On-site' },
-  { period: 'JUN 2021 — MAY 2023', company: 'Qwings', role: 'Web Developer', detail: 'Internship · Remote' },
+  { period: 'DEC 2024 — NOW', company: 'Morningstar', role: 'Software Engineer' },
+  { period: 'MAY 2023 — NOV 2024', company: 'Sciative Solutions', role: 'Jr. Software Developer' },
+  { period: 'JUN 2021 — MAY 2023', company: 'Qwings', role: 'Web Developer' },
 ];
 
 export const testimonialContent = {
-  section: { index: '05', label: 'In their words' },
-  heading: 'Testimonials',
+  title: 'In their',
+  accentTitle: 'words',
 };
 
 export const footerContent = {
-  eyebrow: 'Have a good problem?',
   titleLines: ["Let's make it", 'matter.'],
   backToTopLabel: 'Back to top ↑',
 };

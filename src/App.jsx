@@ -5,7 +5,6 @@ import useSmoothScroll from './hooks/useSmoothScroll';
 import SiteNav from './components/portfolio/SiteNav';
 import { Hero } from './components/sections/Hero';
 import { About } from './components/sections/About';
-import { Focus } from './components/sections/Focus';
 import { Skills } from './components/sections/Skills';
 import { Experience } from './components/sections/Experience';
 import { Testimonials } from './components/sections/Testimonials';
@@ -31,7 +30,6 @@ function App() {
       >
         <Hero />
         <About />
-        <Focus />
         <Skills />
         <Experience />
         <Testimonials />

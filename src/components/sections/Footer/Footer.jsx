@@ -1,22 +1,26 @@
+import { EnvelopeSimpleIcon, PhoneIcon } from '@phosphor-icons/react';
 import { SocialLinks } from '../../common';
 import Reveal from '../../motion/Reveal';
 import MaskedHeading from '../../motion/MaskedHeading';
-import ButtonLink from '../../portfolio/ButtonLink';
 import { footerContent, siteContact } from '../../../data/portfolio';
 
 export default function Footer() {
-  const [emailUser, emailDomain] = siteContact.email.split('@');
-
   return (
     <footer className="site-footer cinematic-section" id="contact">
       <Reveal className="footer-top section-shell">
         <div>
-          <p className="eyebrow">{footerContent.eyebrow}</p>
           <MaskedHeading lines={footerContent.titleLines} />
         </div>
-        <ButtonLink className="email-link" href={`mailto:${siteContact.email}`}>
-          {emailUser}<br />@{emailDomain}
-        </ButtonLink>
+        <div className="footer-contact" aria-label="Contact details">
+          <a className="footer-contact-link" href={`mailto:${siteContact.email}`}>
+            <EnvelopeSimpleIcon aria-hidden="true" weight="light" />
+            <span>{siteContact.email}</span>
+          </a>
+          <a className="footer-contact-link" href={siteContact.phoneHref}>
+            <PhoneIcon aria-hidden="true" weight="light" />
+            <span>{siteContact.phone}</span>
+          </a>
+        </div>
       </Reveal>
       <div className="footer-bottom section-shell">
         <p>© {new Date().getFullYear()} Archit Chitre</p>

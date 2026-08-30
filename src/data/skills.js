@@ -31,32 +31,44 @@ export const skills = [
 	},
 	{
 		id: 6,
-		name: 'MySQL',
+		name: 'Flask',
 		level: 'Intermediate',
-		icon: 'mysql'
+		icon: 'flask'
 	},
 	{
 		id: 7,
+		name: 'SQL',
+		level: 'Intermediate',
+		icon: 'sql'
+	},
+	{
+		id: 8,
 		name: 'MongoDB',
 		level: 'Intermediate',
 		icon: 'mongodb'
 	},
 	{
-		id: 8,
+		id: 9,
 		name: 'GraphQL',
 		level: 'Intermediate',
 		icon: 'graphql'
 	},
 	{
-		id: 9,
+		id: 10,
 		name: 'Git',
 		level: 'Advanced',
 		icon: 'git'
 	},
 	{
-		id: 10,
+		id: 11,
 		name: 'AWS',
 		level: 'Intermediate',
 		icon: 'aws'
+	},
+	{
+		id: 12,
+		name: 'Docker',
+		level: 'Intermediate',
+		icon: 'docker'
 	},
 ];
