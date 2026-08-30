@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
-import monogram from '../../assets/icons/monogram.svg';
+import logo from '../../assets/images/logo.png';
 import { navigationItems } from '../../data/portfolio';
 
 export default function SiteNav() {
@@ -26,6 +26,13 @@ export default function SiteNav() {
   }, []);
 
   useEffect(() => {
+    if (!isOpen || !window.matchMedia('(max-width: 780px)').matches) return undefined;
+
+    document.documentElement.classList.add('mobile-menu-open');
+    return () => document.documentElement.classList.remove('mobile-menu-open');
+  }, [isOpen]);
+
+  useEffect(() => {
     const sectionElements = navigationItems
       .map((item) => ({ ...item, element: document.querySelector(item.href) }))
       .filter((item) => item.element);
@@ -47,9 +54,9 @@ export default function SiteNav() {
   const closeMenu = () => setIsOpen(false);
 
   return (
-    <header className={`site-header${isScrolled ? ' is-scrolled' : ''}`}>
+    <header className={`site-header${isScrolled ? ' is-scrolled' : ''}${isOpen ? ' is-menu-open' : ''}`}>
       <a className="wordmark" href="#top" aria-label="Archit Chitre, back to top">
-        <img src={monogram} alt="" />
+        <img src={logo} alt="" />
       </a>
 
       <nav className="desktop-nav" aria-label="Primary navigation">
