@@ -1,19 +1,28 @@
+import { SocialLinks } from '../../common';
+import Reveal from '../../motion/Reveal';
+import MaskedHeading from '../../motion/MaskedHeading';
+import ButtonLink from '../../portfolio/ButtonLink';
+import { footerContent, siteContact } from '../../../data/portfolio';
 
-import { Box, Typography } from '@mui/material';
-import Layout from '../../layout/Layout';
+export default function Footer() {
+  const [emailUser, emailDomain] = siteContact.email.split('@');
 
-const Footer = () => {
-	return (
-		<footer>
-			<Layout py={8}>
-				<Box sx={{ px: 10, textAlign: 'center' }}>
-					<Typography fontSize={{ xs: '2rem', lg: '1rem' }} variant="body" color="secondary" component='span'>
-						<Typography fontSize={{ xs: '2rem', lg: '1rem' }} variant='bodyBold' component='span' sx={{ display: 'inline' }} color='white'>Thanks for scrolling</Typography>, that's all folks.
-					</Typography>
-				</Box>
-			</Layout>
-		</footer>
-	)
-};
-
-export default Footer;
+  return (
+    <footer className="site-footer cinematic-section" id="contact">
+      <Reveal className="footer-top section-shell">
+        <div>
+          <p className="eyebrow">{footerContent.eyebrow}</p>
+          <MaskedHeading lines={footerContent.titleLines} />
+        </div>
+        <ButtonLink className="email-link" href={`mailto:${siteContact.email}`}>
+          {emailUser}<br />@{emailDomain}
+        </ButtonLink>
+      </Reveal>
+      <div className="footer-bottom section-shell">
+        <p>© {new Date().getFullYear()} Archit Chitre</p>
+        <SocialLinks className="social-links" />
+        <a className="back-top" href="#top">{footerContent.backToTopLabel}</a>
+      </div>
+    </footer>
+  );
+}

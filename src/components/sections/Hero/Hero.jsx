@@ -1,46 +1,60 @@
-import { Box, Grid, Typography } from '@mui/material';
-import { Divider } from '../../common';
-import HeroCopy from './HeroCopy';
-import SocialLinks from './SocialLinks';
-
+import { motion, useReducedMotion, useScroll, useTransform } from 'framer-motion';
 import heroImage from '../../../assets/images/hero-image.png';
+import heroPattern from '../../../assets/icons/hero-pattern.svg';
+import { SocialLinks } from '../../common';
+import MaskedHeading from '../../motion/MaskedHeading';
+import { heroContent } from '../../../data/portfolio';
+import { CaretDownIcon } from "@phosphor-icons/react";
 
-const Hero = () => {
-	return (
-		<Box sx={{ height: '100%', minHeight: { xs: '100vh', md: '100vh' } }}>
-			<Grid container spacing={4} sx={{ height: '100%', minHeight: { xs: '100vh', md: '100vh' } }}>
-				<Grid
-					size={{ xs: 12, lg: 8 }}
-					sx={{
-						height: '100%',
-						minHeight: '100vh',
-						backgroundImage: `url(${heroImage})`,
-						backgroundRepeat: 'no-repeat',
-						backgroundPosition: {xs: '30% 50%', lg: '90% 0'},
-						backgroundSize: { xs: 'cover', lg: 'contain'},
-					}}
-				>
-					<Box sx={{ mt: { xs: 85, lg: 14}, px: { xs: 18, lg: 30}, pt: 20 }}>
-						<HeroCopy />
-						<Divider />
-					</Box>
-					<Box sx={{ mt: 4, px: { xs: 18, lg: 30} }}>
-						<SocialLinks />
-					</Box>
-				</Grid>
-				<Grid size={{ xs: 12, lg: 4 }}>
-					<Box sx={{ mt: { xs: 0, lg: 20}, pr: {xs: 18, lg: 12}, pl: {xs: 18, lg: 0}, py: { xs: 20, lg: 0} }}>
-						<Typography variant="h4" gutterBottom sx={{ mb: 4, fontSize: { xs: '3.2rem', lg: '2rem'} }}>
-							Software Engineer and Developer, based in Mumbai
-						</Typography>
-						<Typography sx={{ mt: 6, fontSize: { xs: '2rem', lg: '1rem'} }} variant="body" color='secondary' gutterBottom>
-							I am a passionate software engineer with experience in building web applications using modern technologies. I love to create efficient and scalable solutions that solve real-world problems.
-						</Typography>
-					</Box>
-				</Grid>
-			</Grid>
-		</Box>
-	);
-};
+export default function Hero() {
+  const shouldReduceMotion = useReducedMotion();
+  const { scrollY } = useScroll();
+  const portraitY = useTransform(scrollY, [0, 900], [0, shouldReduceMotion ? 0 : 72]);
 
-export default Hero;
+  return (
+    <section className="hero" id="top" aria-labelledby="hero-title">
+      <div className="hero-noise" aria-hidden="true" />
+      <div className="hero-vignette" aria-hidden="true" />
+      <motion.img
+        className="hero-pattern"
+        src={heroPattern}
+        alt=""
+        aria-hidden="true"
+        initial={shouldReduceMotion ? false : { opacity: 0, scale: 0.94, y: 26 }}
+        animate={{ opacity: 1, scale: 1, y: 0 }}
+        transition={{ duration: 1.35, delay: 0.08, ease: [0.22, 1, 0.36, 1] }}
+      />
+
+      <div className="hero-copy">
+        <motion.p
+          className="eyebrow hero-kicker"
+          initial={shouldReduceMotion ? false : { opacity: 0, y: 12 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.22 }}
+        >
+          {heroContent.kicker.role} <span> | </span> {heroContent.kicker.location}
+        </motion.p>
+        <MaskedHeading as="h1" className="hero-title" id="hero-title" lines={heroContent.titleLines} delay={0.12} />
+      </div>
+
+      <div className="hero-actions" aria-label="Contact Archit">
+        <SocialLinks className="hero-socials" />
+      </div>
+
+      <motion.div className="portrait-wrap" style={{ y: portraitY }}>
+        <div className="portrait-halo" aria-hidden="true" />
+        <motion.img
+          className="portrait"
+          src={heroImage}
+          alt={heroContent.portraitAlt}
+          initial={shouldReduceMotion ? false : { opacity: 0, scale: 1.04, y: 30 }}
+          animate={{ opacity: 1, scale: 1, y: 0 }}
+          transition={{ duration: 1.3, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
+        />
+        <p className="portrait-caption">{heroContent.portraitCaption} <span>— {heroContent.year}</span></p>
+      </motion.div>
+
+      <a className="read-more" href="#about"><span><CaretDownIcon size={32} /></span></a>
+    </section>
+  );
+}

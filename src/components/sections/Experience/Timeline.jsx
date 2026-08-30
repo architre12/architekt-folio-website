@@ -1,89 +1,30 @@
-import Timeline from '@mui/lab/Timeline';
-import TimelineItem from '@mui/lab/TimelineItem';
-import TimelineSeparator from '@mui/lab/TimelineSeparator';
-import TimelineConnector from '@mui/lab/TimelineConnector';
-import TimelineContent from '@mui/lab/TimelineContent';
-import TimelineOppositeContent from '@mui/lab/TimelineOppositeContent';
-import TimelineDot from '@mui/lab/TimelineDot';
-import TerminalIcon from '@mui/icons-material/Terminal';
-import LaptopChromebookIcon from '@mui/icons-material/LaptopChromebook';
-import LanguageIcon from '@mui/icons-material/Language';
-import Typography from '@mui/material/Typography';
+import arrowUpRight from '../../../assets/icons/arrow-up-right.svg';
+import Reveal from '../../motion/Reveal';
 
-export default function CustomizedTimeline() {
+export default function Timeline({ entries }) {
   return (
-    <Timeline position="alternate">
-      <TimelineItem>
-        <TimelineOppositeContent
-          sx={{ m: { xs: 0, md: 'auto 0'} }}
-          align="right"
-          variant="body2"
-          color="text.secondary"
-		  fontSize={{xs: '1.5rem', lg: '0.9rem'}}
-        >
-          December 2024 - Present
-        </TimelineOppositeContent>
-        <TimelineSeparator>
-          <TimelineConnector />
-          <TimelineDot color='primary'>
-            <TerminalIcon/>
-          </TimelineDot>
-          <TimelineConnector />
-        </TimelineSeparator>
-        <TimelineContent sx={{ py: '12px', px: 2 }}>
-          <Typography fontSize={{ xs: '2.5rem', lg: '1.5rem'}} variant="h6" component="span">Morningstar</Typography>
-          <Typography fontSize={{ xs: '2rem', lg: '1rem'}} variant="bodyBold" component="p" color='primary' gutterBottom>Software Engineer</Typography>
-          <Typography fontSize={{ xs: '1.2rem', lg: '0.7rem' }} variant='small' sx={{ mt: 2 }}>Full-time • Hybrid</Typography>
-        </TimelineContent>
-      </TimelineItem>
+    <div className="experience-timeline" aria-label="Career timeline">
+      {entries.map((entry, index) => {
+        const isLeft = index % 2 === 0;
 
-
-      <TimelineItem>
-        <TimelineOppositeContent
-          sx={{ m: 'auto 0' }}
-          variant="body2"
-          color="text.secondary"
-		  fontSize={{xs: '1.5rem', lg: '0.9rem'}}
-        >
-          May 2023 - November 2024
-        </TimelineOppositeContent>
-        <TimelineSeparator>
-          <TimelineConnector />
-          <TimelineDot>
-            <LaptopChromebookIcon />
-          </TimelineDot>
-          <TimelineConnector />
-        </TimelineSeparator>
-        <TimelineContent sx={{ py: '12px', px: 2 }}>
-          <Typography fontSize={{ xs: '2.5rem', lg: '1.5rem'}} variant="h6" component="span">Sciative Solutions</Typography>
-          <Typography fontSize={{ xs: '2rem', lg: '1rem'}} variant="bodyBold" component="p" color='primary' gutterBottom>Jr. Software Developer</Typography>
-          <Typography fontSize={{ xs: '1.2rem', lg: '0.7rem' }} variant='small' sx={{ mt: 2 }}>Full-time • On-site</Typography>
-        </TimelineContent>
-      </TimelineItem>
-
-	  <TimelineItem>
-        <TimelineOppositeContent
-          sx={{ m: 'auto 0' }}
-          align="right"
-          variant="body2"
-          color="text.secondary"
-		  fontSize={{xs: '1.5rem', lg: '0.9rem'}}
-        >
-          June 2021 - May 2023
-        </TimelineOppositeContent>
-        <TimelineSeparator>
-          <TimelineConnector />
-          <TimelineDot>
-            <LanguageIcon />
-          </TimelineDot>
-          <TimelineConnector />
-        </TimelineSeparator>
-        <TimelineContent sx={{ py: '12px', px: 2 }}>
-          <Typography fontSize={{ xs: '2.5rem', lg: '1.5rem'}} variant="h6" component="span">Qwings</Typography>
-          <Typography fontSize={{ xs: '2rem', lg: '1rem'}} variant="bodyBold" component="p" color='primary' gutterBottom>Web Developer</Typography>
-          <Typography fontSize={{ xs: '1.2rem', lg: '0.7rem' }} variant='small' sx={{ mt: 2 }}>Internship • Remote</Typography>
-        </TimelineContent>
-      </TimelineItem>
-    </Timeline>
+        return (
+          <Reveal
+            as="article"
+            className={`timeline-entry timeline-entry--${isLeft ? 'left' : 'right'}`}
+            delay={index * 0.1}
+            direction={isLeft ? 'right' : 'left'}
+            key={entry.company}
+          >
+            <div className="timeline-card">
+              <div className="timeline-card-top"><time>{entry.period}</time><span>0{index + 1}</span></div>
+              <h3>{entry.company}</h3>
+              <p>{entry.role}</p>
+              <div className="timeline-card-bottom"><span>{entry.detail}</span><img src={arrowUpRight} alt="" /></div>
+            </div>
+            <span className="timeline-node" aria-hidden="true"><i /></span>
+          </Reveal>
+        );
+      })}
+    </div>
   );
 }

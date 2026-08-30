@@ -1,13 +1,7 @@
 import { useEffect, useState } from 'react';
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
 import monogram from '../../assets/icons/monogram.svg';
-
-const navItems = [
-  { label: 'About', href: '#about' },
-  { label: 'Focus', href: '#focus' },
-  { label: 'Career', href: '#experience' },
-  { label: 'Contact', href: '#contact' },
-];
+import { navigationItems } from '../../data/portfolio';
 
 export default function SiteNav() {
   const [isOpen, setIsOpen] = useState(false);
@@ -23,7 +17,7 @@ export default function SiteNav() {
   }, []);
 
   useEffect(() => {
-    const sectionElements = navItems
+    const sectionElements = navigationItems
       .map((item) => ({ ...item, element: document.querySelector(item.href) }))
       .filter((item) => item.element);
 
@@ -47,16 +41,13 @@ export default function SiteNav() {
     <header className="site-header">
       <a className="wordmark" href="#top" aria-label="Archit Chitre, back to top">
         <img src={monogram} alt="" />
-        <span>ARCHIT<br />CHITRE</span>
       </a>
 
       <nav className="desktop-nav" aria-label="Primary navigation">
-        {navItems.map((item) => (
+        {navigationItems.map((item) => (
           <a className={activeHref === item.href ? 'is-active' : ''} href={item.href} key={item.href} aria-current={activeHref === item.href ? 'location' : undefined}>{item.label}</a>
         ))}
       </nav>
-
-      <a className="header-cta" href="mailto:architchitre@gmail.com">Let&apos;s talk <span aria-hidden="true">↗</span></a>
 
       <button
         className="menu-button"
@@ -80,7 +71,7 @@ export default function SiteNav() {
             transition={{ duration: shouldReduceMotion ? 0 : 0.55, ease: [0.22, 1, 0.36, 1] }}
           >
             <div className="mobile-nav-links">
-              {navItems.map((item, index) => (
+              {navigationItems.map((item, index) => (
                 <motion.a
                   href={item.href}
                   key={item.href}

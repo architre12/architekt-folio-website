@@ -1,28 +1,32 @@
-import { Grid } from '@mui/material';
-import theme from '../../../theme/theme';
-import Layout from '../../layout/Layout';
+import Reveal from '../../motion/Reveal';
+import MaskedHeading from '../../motion/MaskedHeading';
+import ButtonLink from '../../portfolio/ButtonLink';
+import { aboutContent, metrics } from '../../../data/portfolio';
 
-import AboutCopy from './AboutCopy';
-import Contact from './Contact';
-
-const About = () => {
-	return(
-		<Layout 
-			width='100%'
-			backgroundColor={theme.palette.background.secondary} 
-			py={14}
-			px={12}
-		>
-			<Grid container spacing={4} sx={{ height: '100%' }}>
-				<Grid size={{ xs: 12, lg: 6 }} order={{ xs: 2, lg: 1 }}>
-					<Contact />
-				</Grid>
-				<Grid size={{ xs: 12, lg: 6 }} order={{ xs: 1, lg: 2 }}>
-					<AboutCopy />
-				</Grid>
-			</Grid>
-		</Layout>
-	)
-};
-
-export default About;
+export default function About() {
+  return (
+    <section className="intro section-shell cinematic-section" id="about" aria-labelledby="about-title">
+      <div className="section-glow section-glow-top" aria-hidden="true" />
+      <Reveal><div className="section-label"><span>{aboutContent.section.index}</span>{aboutContent.section.label}</div></Reveal>
+      <div className="intro-grid">
+        <Reveal className="intro-heading">
+          <p className="eyebrow">{aboutContent.eyebrow}</p>
+          <MaskedHeading id="about-title" lines={aboutContent.titleLines} />
+        </Reveal>
+        <Reveal className="intro-copy" delay={0.12} direction="left">
+          <p className="lead">{aboutContent.lead}</p>
+          <p>{aboutContent.body}</p>
+          <ButtonLink className="text-link" href="#contact">{aboutContent.actionLabel}</ButtonLink>
+        </Reveal>
+      </div>
+      <div className="metrics">
+        {metrics.map((metric, index) => (
+          <Reveal as="div" delay={index * 0.08} key={metric.value}>
+            <strong>{metric.value}<span>{metric.suffix}</span></strong>
+            <p>{metric.lines[0]}<br />{metric.lines[1]}</p>
+          </Reveal>
+        ))}
+      </div>
+    </section>
+  );
+}
