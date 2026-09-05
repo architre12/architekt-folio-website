@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
 import logo from '../../assets/images/logo.png';
 import { navigationItems } from '../../data/portfolio';
+import { SocialLinks } from '../common';
 
 export default function SiteNav() {
   const [isOpen, setIsOpen] = useState(false);
@@ -102,7 +103,7 @@ export default function SiteNav() {
                 </motion.a>
               ))}
             </div>
-            <p>Available for selected collaborations<br />and interesting product problems.</p>
+            <SocialLinks className="mobile-nav-socials" />
           </motion.nav>
         )}
       </AnimatePresence>

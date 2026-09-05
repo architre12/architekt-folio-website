@@ -214,7 +214,8 @@ button { font: inherit; }
   .mobile-nav-links a { border-top: 1px solid var(--line); font-size: clamp(42px, 13vw, 58px); font-weight: 600; letter-spacing: -.07em; line-height: 1; padding: 17px 0; }
   .mobile-nav-links a:last-child { border-bottom: 1px solid var(--line); }
   .mobile-nav-links a span { color: var(--acid); font: 500 9px/1 'Elms Sans', Arial, sans-serif; letter-spacing: .1em; margin-right: 18px; vertical-align: middle; }
-  .mobile-nav > p { color: #9d9d9d; font: 500 10px/1.6 'Elms Sans', Arial, sans-serif; letter-spacing: .06em; margin: 0; position: relative; text-transform: uppercase; z-index: 1; }
+  .mobile-nav-socials { display: flex; gap: 10px; position: relative; z-index: 1; }
+  .mobile-nav-socials .social-icon-link { font-size: 20px; height: 46px; width: 46px; }
 
   .hero { min-height: 790px; }
   .hero::after { background: none; }
