@@ -5,6 +5,7 @@ export default function Skills() {
 
   return (
     <section className="toolkit cinematic-section" id="skills" aria-labelledby="toolkit-title">
+		<h2 className="sr-only" id="toolkit-title">Technical skills and software engineering expertise</h2>
 		<div className="marquee" aria-hidden="true">
 			<div className="marquee-track">
 			{marqueeSkills.map((skill, index) => (

@@ -28,7 +28,7 @@ export const aboutContent = {
   section: { index: '01', label: 'About' },
   eyebrow: 'A few words',
   titleLines: ['Code with', 'conviction.'],
-  lead: "I build digital products focusing on user experience and scalability.",
+  lead: "I'm Archit Chitre, a Software Engineer in Mumbai, India. I build digital products with a focus on user experience and scalability.",
   body: [
 	"From static web pages to deploying containerized microservices and building event-driven architectures, I've come a long way. These days I spend time with my dear friends Claude and ChatGPT.",
 	"When I'm not in front of my laptop, I'm either camped up in a cute cafe in Bandra, or halfway across the world because I like collecting stamps on my passport."

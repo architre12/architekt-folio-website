@@ -1,6 +1,10 @@
 {
-  "short_name": "Portfolio",
-  "name": "Architekt Portfolio Website",
+  "short_name": "Archit Chitre",
+  "name": "Archit Chitre | Software Engineer",
+  "description": "The software engineering portfolio of Archit Chitre.",
   "start_url": ".",
-  "display": "standalone"
+  "display": "standalone",
+  "background_color": "#000000",
+  "theme_color": "#000000",
+  "lang": "en-IN"
 }

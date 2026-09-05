@@ -47,6 +47,9 @@ export default function Hero() {
           className="portrait"
           src={heroImage}
           alt={heroContent.portraitAlt}
+          width="896"
+          height="1152"
+          fetchPriority="high"
           initial={shouldReduceMotion ? false : { opacity: 0, scale: 1.04, y: 30 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
           transition={{ duration: 1.3, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
@@ -54,7 +57,7 @@ export default function Hero() {
         <p className="portrait-caption">{heroContent.portraitCaption} <span>— {heroContent.year}</span></p>
       </motion.div>
 
-      <a className="read-more" href="#about"><span><CaretDownIcon size={32} /></span></a>
+      <a className="read-more" href="#about" aria-label="Read more about Archit Chitre"><span><CaretDownIcon size={32} /></span></a>
     </section>
   );
 }

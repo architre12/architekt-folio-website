@@ -56,7 +56,7 @@ export default function SiteNav() {
   return (
     <header className={`site-header${isScrolled ? ' is-scrolled' : ''}${isOpen ? ' is-menu-open' : ''}`}>
       <a className="wordmark" href="#top" aria-label="Archit Chitre, back to top">
-        <img src={logo} alt="" />
+        <img src={logo} alt="" width="601" height="415" />
       </a>
 
       <nav className="desktop-nav" aria-label="Primary navigation">
