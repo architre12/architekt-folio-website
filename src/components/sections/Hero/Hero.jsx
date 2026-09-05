@@ -10,9 +10,13 @@ export default function Hero() {
   const shouldReduceMotion = useReducedMotion();
   const { scrollY } = useScroll();
   const portraitY = useTransform(scrollY, [0, 900], [0, shouldReduceMotion ? 0 : 72]);
+  const heroScale = useTransform(scrollY, [0, 620], [1, shouldReduceMotion ? 1 : 0.9]);
+  const heroOpacity = useTransform(scrollY, [0, 260, 560], [1, shouldReduceMotion ? 1 : 0.4, shouldReduceMotion ? 1 : 0]);
+  const heroY = useTransform(scrollY, [0, 620], [0, shouldReduceMotion ? 0 : -32]);
 
   return (
-    <section className="hero" id="top" aria-labelledby="hero-title">
+    <div className="hero-scroll">
+    <motion.section className="hero" id="top" aria-labelledby="hero-title" style={{ scale: heroScale, opacity: heroOpacity, y: heroY }}>
       <div className="hero-noise" aria-hidden="true" />
       <div className="hero-vignette" aria-hidden="true" />
       <motion.img
@@ -58,6 +62,7 @@ export default function Hero() {
       </motion.div>
 
       <a className="read-more" href="#about" aria-label="Read more about Archit Chitre"><span><CaretDownIcon size={32} /></span></a>
-    </section>
+    </motion.section>
+    </div>
   );
 }
